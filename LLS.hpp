@@ -11,10 +11,12 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLS();
+    LLS() : list() {}
 
     // Insertion
-    void push(const T& item) override;
+    void push(const T& item) override {
+
+    }
 
     // Deletion
     T pop() override;

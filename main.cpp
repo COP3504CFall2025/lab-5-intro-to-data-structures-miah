@@ -9,6 +9,8 @@
 #include "LLQ.hpp"
 #include "LLS.hpp"
 #include <iostream>
+#include <list>
+#include <unistd.h>
 
 /*
     - LEAVE THE IFDEF GUARDS TO KEEP YOUR MAIN WITHOUT CONFLICTING WITH GRADESCOPE!
@@ -19,7 +21,12 @@
 */
 
 int main() {
-
+    LLQ<int> linkedListQueue;
+    linkedListQueue.dequeue();
+    linkedListQueue.enqueue(5);
+    linkedListQueue.enqueue(5);
+    linkedListQueue.enqueue(5);
+    linkedListQueue.enqueue(5);
 
     return 0;
 }
