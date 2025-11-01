@@ -65,6 +65,9 @@ public:
 		return true;
 	}
 	void Clear() {
+		if (count==0) {
+			return;
+		}
 		Node* current=head;
 		while (current->next) {
 			Node* temp=current;
