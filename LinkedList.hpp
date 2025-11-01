@@ -79,7 +79,7 @@ public:
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept {
-		if (*this==other) {
+		if (this==&other) {
 			return *this;
 		}
 		Clear();
@@ -91,10 +91,15 @@ public:
 
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
-		if (rhs==*this) {
+		if (&rhs==this) {
 			return *this;
 		}
-
+		Node* current = rhs.head;
+		while (current->next) {
+			addHead(current);
+			current=current->next;
+		}
+		return *this;
 	}
 
 	// Construction/Destruction
