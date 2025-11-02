@@ -21,7 +21,30 @@
 */
 
 int main() {
-    std::cout<<"testing LLQ"<<std::endl;
+    std::cout<<"testing linked list"<<std::endl;
+    LinkedList<int> ll;
+
+    std::cout<<ll.getCount()<<std::endl;
+    try {
+        ll.printForward();
+        ll.printReverse();
+        std::cout<<ll.getHead()<<std::endl;
+        std::cout<<ll.getTail()<<std::endl;
+    } catch (std::runtime_error& err) {
+        std::cout<<"woopsies"<<std::endl;
+    }
+
+    ll.addHead(2);
+    ll.addHead(1);
+    ll.addTail(3);
+    ll.addTail(4);
+
+    ll.printForward();
+    ll.printReverse();
+    std::cout<<ll.getCount()<<std::endl;
+
+
+    std::cout<<std::endl<<"testing LLQ"<<std::endl;
     LLQ<int> linkedListQueue;
     try {
         std::cout<<linkedListQueue.getSize()<<std::endl;

@@ -10,18 +10,24 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
+		if (count==0)
+			throw std::runtime_error("tried to print an empty linked list");
 		const Node* currentNode = head;
 		while (currentNode->next) {
 			std::cout << currentNode->data << std::endl;
-			currentNode=*(currentNode->next());
+			currentNode = currentNode->next;
 		}
+		std::cout<<currentNode->data<<std::endl;
 	}
 	void printReverse() const {
+		if (count==0)
+			throw std::runtime_error("tried to print an empty linked list");
 		const Node* currentNode = tail;
 		while (currentNode->prev) {
 			std::cout << currentNode->data << std::endl;
-			currentNode=*(currentNode->prev());
+			currentNode = currentNode->prev;
 		}
+		std::cout<<currentNode->data<<std::endl;
 	}
 
 	// Accessors
@@ -54,6 +60,8 @@ public:
 	// Removal
 	bool removeHead() {
 		if (count==0)
+			throw std::runtime_error("tried to remove from an empty linked list");
+		if (count==0)
 			return false;
 		Node* temp = head;
 		head = head->next;
@@ -63,6 +71,8 @@ public:
 		return true;
 	}
 	bool removeTail() {
+		if (count==0)
+			throw std::runtime_error("tried to remove from an empty linked list");
 		if (count==0)
 			return false;
 		Node* temp = tail;

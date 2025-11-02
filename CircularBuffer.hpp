@@ -102,10 +102,10 @@ public:
     }
 
 
-    std::size_t getSize() const {
+    [[nodiscard]] std::size_t getSize() const {
         return size;
     }
-    std::size_t getCapacity() const {
+    [[nodiscard]] std::size_t getCapacity() const {
         return capacity;
     }
     T* getData() {
