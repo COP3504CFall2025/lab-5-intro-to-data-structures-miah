@@ -4,7 +4,7 @@
 template <typename T>
 class CircularBuffer {
 public:
-    explicit CircularBuffer(const std::size_t cap = 0) : data(new T[cap]), capacity(cap), size(0), frontIndex(0) {}
+    explicit CircularBuffer(const std::size_t cap = 1) : data(new T[cap]), capacity(cap), size(0), frontIndex(0) {}
 
     CircularBuffer(const CircularBuffer& other) {
         capacity=other.capacity;
@@ -33,7 +33,6 @@ public:
     CircularBuffer& operator=(const CircularBuffer& other) {
         if (this==&other)
             return *this;
-        deleteContents();
         delete[] data;
         capacity=other.capacity;
         data=new T[capacity];
@@ -66,38 +65,50 @@ public:
         if (size==capacity)
             increaseSize();
         long newFront = frontIndex-1;
-        if (newFront<0)
-            newFront=size-1;
+        if (newFront==-1)
+            newFront=capacity-1;
 
         data[newFront] = item;
         frontIndex=newFront;
+        size++;
     }
     void addBack(const T& item) {
         if (size==capacity)
             increaseSize();
-        std::size_t newFront = frontIndex+size;
-        if (newFront>capacity)
-            newFront=0;
+        std::size_t newBack = frontIndex+size;
+        if (newBack>capacity)
+            newBack=0;
 
-        data[newFront] = item;
-        frontIndex=newFront;
+        data[newBack] = item;
+        size++;
     }
 
 
     void removeBack() {
+        if (size==0)
+            throw std::runtime_error("tried to remove from an empty buffer");
         size--;
     }
     void removeFront() {
+        if (size==0)
+            throw std::runtime_error("tried to remove from an empty buffer");
         frontIndex++;
         if (frontIndex>=capacity)
             frontIndex=0;
+        size--;
     }
 
 
     const T& front() const {
+        if (size==0)
+            throw std::runtime_error("tried to access an empty buffer");
         return data[frontIndex];
     }
     const T& back() const {
+        if (size==0)
+            throw std::runtime_error("tried to access an empty buffer");
+        if (frontIndex+size-1>capacity)
+            return data[frontIndex+size-capacity-1];
         return data[frontIndex+size-1];
     }
 
@@ -114,8 +125,7 @@ public:
 
 
     ~CircularBuffer() {
-        deleteContents();
-        delete data;
+        delete[] data;
     }
 private:
     T* data;
@@ -126,21 +136,15 @@ private:
 
     void increaseSize() {
         T* temp=new T[capacity*scale_factor_];
-        for (int i=0;i<capacity;i++) {
+        for (std::size_t i=0;i<capacity;i++) {
             if (i+frontIndex>=capacity)
                 temp[i]=data[i-capacity];
             else
-                temp[i]=data[i];
+                temp[i]=data[i+frontIndex];
         }
         frontIndex=0;
-        capacity*=2;
-        deleteContents();
+        capacity = capacity*scale_factor_;
         delete[] data;
         data=temp;
-    }
-    void deleteContents() {
-        for (int i=0; i < capacity; i++) {
-            delete data[i];
-        }
     }
 };

@@ -13,21 +13,19 @@ public:
 		if (count==0)
 			throw std::runtime_error("tried to print an empty linked list");
 		const Node* currentNode = head;
-		while (currentNode->next) {
+		while (currentNode) {
 			std::cout << currentNode->data << std::endl;
 			currentNode = currentNode->next;
 		}
-		std::cout<<currentNode->data<<std::endl;
 	}
 	void printReverse() const {
 		if (count==0)
 			throw std::runtime_error("tried to print an empty linked list");
 		const Node* currentNode = tail;
-		while (currentNode->prev) {
+		while (currentNode) {
 			std::cout << currentNode->data << std::endl;
 			currentNode = currentNode->prev;
 		}
-		std::cout<<currentNode->data<<std::endl;
 	}
 
 	// Accessors
@@ -87,12 +85,11 @@ public:
 			return;
 		}
 		Node* current=head;
-		while (current->next) {
+		while (current) {
 			Node* temp=current;
 			current=temp->next;
 			delete temp;
 		}
-		delete current;
 		head=nullptr;
 		tail=nullptr;
 		count=0;
@@ -115,6 +112,7 @@ public:
 		if (&rhs==this) {
 			return *this;
 		}
+		clear();
 		Node* current = rhs.head;
 		while (current) {
 			addHead(current->data);
@@ -125,12 +123,13 @@ public:
 
 	// Construction/Destruction
 	LinkedList() : head(nullptr), tail(nullptr), count(0) {}
-	LinkedList(const LinkedList<T>& list) : head(nullptr), tail(nullptr), count(list.count) {
+	LinkedList(const LinkedList<T>& list) : head(nullptr), tail(nullptr), count(0) {
 		Node* current=list.head;
 		while (current) {
 			addTail(current->data);
 			current=current->next;
 		}
+
 	}
 	LinkedList(LinkedList<T>&& other) noexcept {
 		head=other.head;
@@ -138,6 +137,7 @@ public:
 		other.head=nullptr;
 		other.tail=nullptr;
 		count=other.count;
+		other.count=0;
 	}
 	~LinkedList() {
 		clear();
