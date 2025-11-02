@@ -82,7 +82,7 @@ public:
 		count--;
 		return true;
 	}
-	void Clear() {
+	void clear() {
 		if (count==0) {
 			return;
 		}
@@ -103,7 +103,7 @@ public:
 		if (this==&other) {
 			return *this;
 		}
-		Clear();
+		clear();
 		head=other.head;
 		tail=other.tail;
 		other.head=nullptr;
@@ -116,8 +116,8 @@ public:
 			return *this;
 		}
 		Node* current = rhs.head;
-		while (current->next) {
-			addHead(current);
+		while (current) {
+			addHead(current->data);
 			current=current->next;
 		}
 		return *this;
@@ -127,8 +127,9 @@ public:
 	LinkedList() : head(nullptr), tail(nullptr), count(0) {}
 	LinkedList(const LinkedList<T>& list) : head(nullptr), tail(nullptr), count(list.count) {
 		Node* current=list.head;
-		while (current->next) {
-			addTail(current->next.data);
+		while (current) {
+			addTail(current->data);
+			current=current->next;
 		}
 	}
 	LinkedList(LinkedList<T>&& other) noexcept {
@@ -139,7 +140,7 @@ public:
 		count=other.count;
 	}
 	~LinkedList() {
-		Clear();
+		clear();
 	}
 
 private:
