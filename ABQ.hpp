@@ -2,41 +2,63 @@
 
 #include <cstddef>
 #include <stdexcept>
+
+#include "CircularBuffer.hpp"
 #include "Interfaces.hpp"
 
 // Technically bad, but size_t isn't likely to conflict with any client code.
 using std::size_t;
 
 template<typename T>
-class ABQ : public QueueInterface<T>{
-
-    size_t capacity_;
-    size_t curr_size_;
-    T* array_;
-    static constexpr size_t scale_factor_ = 2;
+class ABQ : public QueueInterface<T> {
+    CircularBuffer<T> data;
 
 public:
     // Constructors + Big 5
-    ABQ();
-    explicit ABQ(const size_t capacity);
-    ABQ(const ABQ& other);
-    ABQ& operator=(const ABQ& rhs);
-    ABQ(ABQ&& other) noexcept;
-    ABQ& operator=(ABQ&& rhs) noexcept;
-    ~ABQ() noexcept override;
+    ABQ() : data() {}
+    explicit ABQ(const size_t capacity) : data(capacity) {}
+    ABQ(const ABQ& other) : data(other.data) {}
+    ABQ& operator=(const ABQ& rhs) {
+        if (this==&rhs)
+            return *this;
+        data = rhs.data;
+        return *this;
+    }
+    ABQ(ABQ&& other) noexcept : data(other.data) {}
+    ABQ& operator=(ABQ&& rhs) noexcept {
+        if (this==&rhs)
+            return *this;
+        data = rhs.data;
+        return *this;
+    }
+    ~ABQ() noexcept override = default;
 
     // Getters
-    [[nodiscard]] size_t getSize() const noexcept override;
-    [[nodiscard]] size_t getMaxCapacity() const noexcept;
-    [[nodiscard]] T* getData() const noexcept;
+    [[nodiscard]] size_t getSize() const noexcept override {
+        return data.getSize();
+    }
+    [[nodiscard]] size_t getMaxCapacity() const noexcept {
+        return data.getCapacity();
+    }
+    [[nodiscard]] T* getData() const noexcept {
+        return data.getData();
+    }
 
     // Insertion
-    void enqueue(const T& data) override;
+    void enqueue(const T& data) override {
+        this->data.addBack(data);
+    }
 
     // Access
-    T peek() const override;
+    T peek() const override {
+        return data.front();
+    }
 
     // Deletion
-    T dequeue() override;
+    T dequeue() override {
+        T temp = data.front();
+        data.removeFront();
+        return temp;
+    }
 
 };

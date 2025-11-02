@@ -36,10 +36,17 @@ public:
 	// Insertion
 	void addHead(const T& data) {
 		head = new Node(T(data), nullptr, head);
+		if (count==0)
+			tail = head;
+		else
+			head->next->prev=head;
 		count++;
 	}
 	void addTail(const T& data) {
 		tail = new Node(T(data), tail,nullptr);
+		tail->next=tail;
+		if (count==0)
+			head=tail;
 		count++;
 	}
 

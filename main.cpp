@@ -21,12 +21,77 @@
 */
 
 int main() {
+    std::cout<<"testing LLQ"<<std::endl;
     LLQ<int> linkedListQueue;
+    try {
+        std::cout<<linkedListQueue.getSize()<<std::endl;
+        std::cout<<linkedListQueue.peek()<<std::endl;
+        std::cout<<linkedListQueue.dequeue()<<std::endl;
+    }catch (std::out_of_range& error) {
+        std::cout<<"didly darn"<<std::endl;
+    }
+    linkedListQueue.enqueue(1);
+    linkedListQueue.enqueue(2);
+    linkedListQueue.enqueue(3);
+    linkedListQueue.enqueue(4);
     linkedListQueue.dequeue();
-    linkedListQueue.enqueue(5);
-    linkedListQueue.enqueue(5);
-    linkedListQueue.enqueue(5);
-    linkedListQueue.enqueue(5);
+
+    std::cout<<linkedListQueue.getSize()<<std::endl;
+    std::cout<<linkedListQueue.peek()<<std::endl;
+    std::cout<<linkedListQueue.dequeue()<<std::endl;
+
+    std::cout<<std::endl<<"testing LLS"<<std::endl;
+
+    LLS<int> lls;
+
+    try {
+        std::cout<<lls.getSize()<<std::endl;
+        std::cout<<lls.peek()<<std::endl;
+        std::cout<<lls.pop()<<std::endl;
+    } catch (std::out_of_range& err) {
+        std::cout<<"dagnit"<<std::endl;
+    }
+
+    lls.push(1);
+    lls.push(2);
+    lls.push(3);
+    lls.push(4);
+    lls.push(5);
+    lls.pop();
+
+    std::cout<<lls.getSize()<<std::endl;
+    std::cout<<lls.peek()<<std::endl;
+    std::cout<<lls.pop()<<std::endl;
+
+    std::cout<<std::endl<<"testing LLDQ"<<std::endl;
+
+    LLDQ<int> lldq;
+
+    try {
+        std::cout<<lldq.getSize()<<std::endl;
+        std::cout<<lldq.front()<<std::endl;
+        std::cout<<lldq.back()<<std::endl;
+        std::cout<<lldq.popFront()<<std::endl;
+        std::cout<<lldq.popBack()<<std::endl;
+    } catch (std::out_of_range& err) {
+        std::cout<<"phooey"<<std::endl;
+    }
+
+    lldq.pushFront(1);
+    lldq.pushBack(10);
+    lldq.pushFront(2);
+    lldq.pushBack(20);
+    lldq.pushFront(3);
+    lldq.pushBack(30);
+
+    std::cout<<lldq.getSize()<<std::endl;
+    std::cout<<lldq.front()<<std::endl;
+    std::cout<<lldq.back()<<std::endl;
+    std::cout<<lldq.popFront()<<std::endl;
+    std::cout<<lldq.popBack()<<std::endl;
+
+
+
 
     return 0;
 }
