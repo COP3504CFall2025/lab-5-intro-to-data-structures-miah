@@ -21,7 +21,7 @@ public:
     // Deletion
     T dequeue() override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to dequeue on an empty queue.");
+            throw std::runtime_error("Tried to dequeue on an empty queue.");
         T out = list.getTail()->data;
         list.removeTail();
         return out;
@@ -30,7 +30,7 @@ public:
     // Access
     T peek() const override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to peek on an empty queue.");
+            throw std::runtime_error("Tried to peek on an empty queue.");
         return list.getTail()->data;
     }
 

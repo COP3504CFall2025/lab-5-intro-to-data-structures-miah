@@ -44,9 +44,10 @@ public:
 	}
 	void addTail(const T& data) {
 		tail = new Node(T(data), tail,nullptr);
-		tail->next=tail;
 		if (count==0)
 			head=tail;
+		else
+			tail->prev->next=tail;
 		count++;
 	}
 

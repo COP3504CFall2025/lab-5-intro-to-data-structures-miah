@@ -27,7 +27,7 @@ int main() {
         std::cout<<linkedListQueue.getSize()<<std::endl;
         std::cout<<linkedListQueue.peek()<<std::endl;
         std::cout<<linkedListQueue.dequeue()<<std::endl;
-    }catch (std::out_of_range& error) {
+    }catch (std::runtime_error& error) {
         std::cout<<"didly darn"<<std::endl;
     }
     linkedListQueue.enqueue(1);
@@ -48,7 +48,7 @@ int main() {
         std::cout<<lls.getSize()<<std::endl;
         std::cout<<lls.peek()<<std::endl;
         std::cout<<lls.pop()<<std::endl;
-    } catch (std::out_of_range& err) {
+    } catch (std::runtime_error& err) {
         std::cout<<"dagnit"<<std::endl;
     }
 
@@ -73,7 +73,7 @@ int main() {
         std::cout<<lldq.back()<<std::endl;
         std::cout<<lldq.popFront()<<std::endl;
         std::cout<<lldq.popBack()<<std::endl;
-    } catch (std::out_of_range& err) {
+    } catch (std::runtime_error& err) {
         std::cout<<"phooey"<<std::endl;
     }
 

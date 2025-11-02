@@ -28,14 +28,14 @@ public:
     // Core Removal Operations
     T popFront() override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to access anb empty deque");
+            throw std::runtime_error("Tried to access anb empty deque");
         T out = list.getHead()->data;
         list.removeHead();
         return out;
     }
     T popBack() override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to access anb empty deque");
+            throw std::runtime_error("Tried to access anb empty deque");
         T out = list.getTail()->data;
         list.removeTail();
         return out;
@@ -44,12 +44,12 @@ public:
     // Element Accessors
     const T& front() const override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to access anb empty deque");
+            throw std::runtime_error("Tried to access anb empty deque");
         return list.getHead()->data;
     }
     const T& back() const override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to access anb empty deque");
+            throw std::runtime_error("Tried to access anb empty deque");
         return list.getTail()->data;
     }
 

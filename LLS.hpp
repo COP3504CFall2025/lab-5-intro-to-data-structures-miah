@@ -21,7 +21,7 @@ public:
     // Deletion
     T pop() override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to pop an empty stack");
+            throw std::runtime_error("Tried to pop an empty stack");
         T out = list.getTail()->data;
         list.removeHead();
         return out;
@@ -30,7 +30,7 @@ public:
     // Access
     T peek() const override {
         if (list.getCount()==0)
-            throw std::out_of_range("Tried to peak an empty stack");
+            throw std::runtime_error("Tried to peak an empty stack");
         return list.getTail()->data;
     }
 
