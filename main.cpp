@@ -45,7 +45,7 @@ int main() {
 
     LinkedList<int> newll(ll);
     newll=ll;
-    LinkedList<int> movedll=std::move(ll);
+    LinkedList<int> movedll(std::move(ll));
     movedll=std::move(newll);
 
 

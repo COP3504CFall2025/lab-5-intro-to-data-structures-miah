@@ -58,7 +58,7 @@ public:
 	// Removal
 	bool removeHead() {
 		if (count==0)
-			throw std::runtime_error("tried to remove from an empty linked list");
+			return false;
 		if (count==0)
 			return false;
 		Node* temp = head;
@@ -70,7 +70,7 @@ public:
 	}
 	bool removeTail() {
 		if (count==0)
-			throw std::runtime_error("tried to remove from an empty linked list");
+			return false;
 		if (count==0)
 			return false;
 		Node* temp = tail;
