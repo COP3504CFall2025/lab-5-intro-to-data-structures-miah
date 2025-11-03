@@ -75,7 +75,10 @@ public:
 		Node* temp = tail;
 		tail = tail->prev;
 		delete temp;
-		tail->next = nullptr;
+		if (count!=1)
+			tail->next = nullptr;
+		else
+			head=nullptr;
 		count--;
 		return true;
 	}
@@ -102,6 +105,8 @@ public:
 		clear();
 		head=other.head;
 		tail=other.tail;
+		count=other.count;
+		other.count=0;
 		other.head=nullptr;
 		other.tail=nullptr;
 		return *this;
@@ -114,7 +119,7 @@ public:
 		clear();
 		Node* current = rhs.head;
 		while (current) {
-			addHead(current->data);
+			addTail(current->data);
 			current=current->next;
 		}
 		return *this;

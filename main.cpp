@@ -46,25 +46,24 @@ int main() {
 
     std::cout<<"removing"<<std::endl;
 
+    std::cout<<ll.getHead()->data<<std::endl;
+    std::cout<<ll.getTail()->data<<std::endl;
+
     ll.removeHead();
-    ll.removeHead();
-    ll.addHead(67);
-    ll.removeHead();
-    ll.removeHead();
-    ll.removeHead();
-    ll.removeHead();
-    ll.removeHead();
-    ll.addHead(123);
-    ll.removeHead();
-    ll.addHead(20);
-    ll.printForward();
-    ll.printReverse();
+
+    std::cout<<ll.getHead()->data<<std::endl;
+    std::cout<<ll.getTail()->data<<std::endl;
+    std::cout<<ll.getCount()<<std::endl;
 
 
     LinkedList<int> newll(ll);
     newll=ll;
     LinkedList<int> movedll(std::move(ll));
     movedll=std::move(newll);
+
+    std::cout<<movedll.getHead()->data<<std::endl;
+    std::cout<<movedll.getTail()->data<<std::endl;
+    std::cout<<movedll.getCount()<<std::endl;
 
     throw std::runtime_error("done");
 
