@@ -22,7 +22,7 @@ public:
     T pop() override {
         if (list.getCount()==0)
             throw std::runtime_error("Tried to pop an empty stack");
-        T out = list.getTail()->data;
+        T out = list.getHead()->data;
         list.removeHead();
         return out;
     }
@@ -31,7 +31,7 @@ public:
     T peek() const override {
         if (list.getCount()==0)
             throw std::runtime_error("Tried to peak an empty stack");
-        return list.getTail()->data;
+        return list.getHead()->data;
     }
 
     //Getters

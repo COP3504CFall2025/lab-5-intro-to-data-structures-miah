@@ -109,6 +109,16 @@ int main() {
     std::cout<<lls.peek()<<std::endl;
     std::cout<<lls.pop()<<std::endl;
 
+    LLS<int> newlls=std::move(lls);
+
+    std::cout<<newlls.peek()<<std::endl;
+    newlls.pop();
+    std::cout<<newlls.pop()<<std::endl;
+
+    std::cout<<lls.peek()<<std::endl;
+
+    throw std::runtime_error("done");
+
     std::cout<<std::endl<<"testing LLDQ"<<std::endl;
 
     LLDQ<int> lldq;
@@ -135,6 +145,7 @@ int main() {
     std::cout<<lldq.back()<<std::endl;
     std::cout<<lldq.popFront()<<std::endl;
     std::cout<<lldq.popBack()<<std::endl;
+
 
     std::cout<<std::endl<<"testing Circular buffer:"<<std::endl;
     CircularBuffer<int> cb;
@@ -168,7 +179,6 @@ int main() {
     std::cout<<cb.front()<<std::endl;
     std::cout<<cb.back()<<std::endl;
 
-    throw std::runtime_error("done");
 
     std::cout<<std::endl<<"testing ABS"<<std::endl;
 
