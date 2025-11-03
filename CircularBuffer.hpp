@@ -12,11 +12,11 @@ public:
         data=new T[capacity];
         size=other.size;
         frontIndex=0;
-        for (std::size_t i=0;i<capacity;i++) {
+        for (std::size_t i=0;i<size;i++) {
             if (i+other.frontIndex>=capacity)
-                data[i]=other.data[i-capacity];
+                data[i]=other.data[i+other.frontIndex-capacity];
             else
-                data[i]=other.data[i];
+                data[i]=other.data[i+other.frontIndex];
         }
     }
 
@@ -39,11 +39,11 @@ public:
         data=new T[capacity];
         size=other.size;
         frontIndex=0;
-        for (std::size_t i=0;i<capacity;i++) {
+        for (std::size_t i=0;i<size;i++) {
             if (i+other.frontIndex>=capacity)
-                data[i]=other.data[i-capacity];
+                data[i]=other.data[i+other.frontIndex-capacity];
             else
-                data[i]=other.data[i];
+                data[i]=other.data[i+other.frontIndex];
         }
         return *this;
     }
