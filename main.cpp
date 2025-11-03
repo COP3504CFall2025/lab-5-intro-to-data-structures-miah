@@ -176,91 +176,35 @@ int main() {
     std::cout<<cb.back()<<std::endl;
 
 
-    std::cout<<std::endl<<"testing ABS"<<std::endl;
+    std::cout<<std::endl<<"Testing ABS"<<std::endl;
 
     ABS<int> abs;
-
-    try {
-        std::cout<<abs.getSize()<<std::endl;
-        std::cout<<abs.getMaxCapacity()<<std::endl;
-        std::cout<<abs.peek()<<std::endl;
-        std::cout<<abs.pop()<<std::endl;
-    } catch (std::runtime_error& err) {
-        std::cout<<"stinky"<<std::endl;
-    }
 
     abs.push(1);
     abs.push(2);
     abs.push(3);
     abs.push(4);
+    abs.push(5);
+    abs.push(6);
+    abs.push(7);
 
     std::cout<<abs.getSize()<<std::endl;
-    std::cout<<abs.getMaxCapacity()<<std::endl;
     std::cout<<abs.peek()<<std::endl;
+    std::cout<<abs.getMaxCapacity()<<std::endl;
+
+    std::cout<<"removing"<<std::endl;
+
+    std::cout<<abs.pop()<<std::endl;
+    std::cout<<abs.pop()<<std::endl;
+    std::cout<<abs.pop()<<std::endl;
+    std::cout<<abs.pop()<<std::endl;
+    std::cout<<abs.pop()<<std::endl;
+    std::cout<<abs.pop()<<std::endl;
     std::cout<<abs.pop()<<std::endl;
 
-    ABS<int> newabs=std::move(abs);
 
-    std::cout<<"cuckshit"<<std::endl;
 
-    std::cout<<newabs.getSize()<<std::endl;
-    std::cout<<newabs.getMaxCapacity()<<std::endl;
-    std::cout<<newabs.peek()<<std::endl;
-    std::cout<<newabs.pop()<<std::endl;
-    newabs.push(12);
-    newabs.push(13);
-    newabs.push(14);
-    std::cout<<newabs.pop()<<std::endl;
-    std::cout<<abs.peek()<<std::endl;
 
-    throw std::runtime_error("done");
-
-    std::cout<<std::endl<<"testing ABQ"<<std::endl;
-
-    ABQ<int> abq;
-    try {
-        std::cout<<abq.getSize()<<std::endl;
-        std::cout<<abq.getMaxCapacity()<<std::endl;
-        std::cout<<abq.peek()<<std::endl;
-        std::cout<<abq.dequeue()<<std::endl;
-    }catch (std::runtime_error& err) {
-        std::cout<<"sa"<<std::endl;
-    }
-
-    abq.enqueue(1);
-    abq.enqueue(2);
-    abq.enqueue(3);
-    abq.enqueue(4);
-
-    std::cout<<abq.getSize()<<std::endl;
-    std::cout<<abq.getMaxCapacity()<<std::endl;
-    std::cout<<abq.peek()<<std::endl;
-    std::cout<<abq.dequeue()<<std::endl;
-
-    std::cout<<std::endl<<"Testing ABDQ"<<std::endl;
-
-    ABDQ<int> abdq;
-
-    try {
-        std::cout<<abdq.getSize()<<std::endl;
-        std::cout<<abdq.front()<<std::endl;
-        std::cout<<abdq.back()<<std::endl;
-        std::cout<<abdq.popFront()<<std::endl;
-        std::cout<<abdq.popBack()<<std::endl;
-    }catch (std::runtime_error& err) {
-        std::cout<<"adf"<<std::endl;
-    }
-
-    abdq.pushFront(2);
-    abdq.pushFront(1);
-    abdq.pushBack(3);
-    abdq.pushBack(4);
-
-    std::cout<<abdq.getSize()<<std::endl;
-    std::cout<<abdq.front()<<std::endl;
-    std::cout<<abdq.back()<<std::endl;
-    std::cout<<abdq.popFront()<<std::endl;
-    std::cout<<abdq.popBack()<<std::endl;
 
 
     return 0;

@@ -14,7 +14,7 @@ private:
 
 public:
     // Constructor
-    explicit ABDQ(std::size_t capacity=0) : data(capacity) {}
+    explicit ABDQ(std::size_t capacity=1) : data(capacity) {}
 
     // Insertion
     void pushFront(const T& item) override {

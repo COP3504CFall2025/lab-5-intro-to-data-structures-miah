@@ -13,7 +13,7 @@ template<typename T>
 class ABS : public StackInterface<T> {
 public:
     // Constructor
-    explicit ABS(const size_t capacity = 0) : data(capacity) {}
+    explicit ABS(const size_t capacity = 1) : data(capacity) {}
 
     // Get the number of items in the ABS
     [[nodiscard]] size_t getSize() const noexcept override {

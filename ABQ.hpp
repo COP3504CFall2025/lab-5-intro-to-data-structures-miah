@@ -15,7 +15,7 @@ class ABQ : public QueueInterface<T> {
 
 public:
     // Constructor
-    explicit ABQ(const size_t capacity=0) : data(capacity) {}
+    explicit ABQ(const size_t capacity=1) : data(capacity) {}
 
     // Getters
     [[nodiscard]] size_t getSize() const noexcept override {
