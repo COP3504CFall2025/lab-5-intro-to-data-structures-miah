@@ -29,8 +29,8 @@ public:
     }
 
     // Insertion
-    void enqueue(const T& data) override {
-        this->data.addBack(data);
+    void enqueue(const T& item) override {
+        data.addBack(item);
     }
 
     // Access

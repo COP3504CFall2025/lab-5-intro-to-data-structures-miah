@@ -212,7 +212,6 @@ int main() {
     newabs.push(14);
     std::cout<<newabs.pop()<<std::endl;
     std::cout<<abs.peek()<<std::endl;
-    abs=newabs;
 
     throw std::runtime_error("done");
 

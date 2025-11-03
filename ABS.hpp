@@ -31,8 +31,8 @@ public:
     }
 
     // Push item onto the stack
-    void push(const T& data) override {
-        this->data.addFront(data);
+    void push(const T& item) override {
+        data.addFront(item);
     }
 
     T peek() const override {
