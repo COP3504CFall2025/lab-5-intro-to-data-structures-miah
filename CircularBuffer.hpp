@@ -77,8 +77,8 @@ public:
         if (size==capacity)
             increaseSize();
         std::size_t newBack = frontIndex+size;
-        if (newBack>capacity)
-            newBack=0;
+        if (newBack>=capacity)
+            newBack=newBack-capacity;
 
         data[newBack] = item;
         size++;

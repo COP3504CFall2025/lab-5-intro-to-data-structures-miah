@@ -167,6 +167,19 @@ int main() {
     std::cout<<cb.back()<<std::endl;
     cb.removeFront();
     cb.removeBack();
+    cb.printData();
+
+    cb.addBack(6);
+    cb.removeBack();
+    cb.addBack(6);
+    cb.removeFront();
+    cb.printData();
+    cb.addBack(7);
+    cb.printData();
+    cb.removeFront();
+    cb.printData();
+    cb.addBack(8);
+    cb.printData();
 
     cb.printData();
 
