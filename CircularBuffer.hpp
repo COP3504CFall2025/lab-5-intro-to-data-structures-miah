@@ -152,7 +152,7 @@ private:
     static constexpr size_t scale_factor_ = 2;
 
     void increaseSize() {
-        T* temp=new T[capacity/scale_factor_];
+        T* temp=new T[capacity*scale_factor_];
         for (std::size_t i=0;i<size;i++) {
             if (i+frontIndex>=capacity)
                 temp[i]=data[i+frontIndex-capacity];
@@ -160,7 +160,7 @@ private:
                 temp[i]=data[i+frontIndex];
         }
         frontIndex=0;
-        capacity = capacity/scale_factor_;
+        capacity = capacity*scale_factor_;
         delete[] data;
         data=temp;
     }
@@ -174,7 +174,7 @@ private:
                 temp[i]=data[i+frontIndex];
         }
         frontIndex=0;
-        capacity = capacity*scale_factor_;
+        capacity = capacity/scale_factor_;
         delete[] data;
         data=temp;
     }
