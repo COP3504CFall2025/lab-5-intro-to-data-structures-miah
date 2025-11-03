@@ -54,6 +54,7 @@ public:
         capacity=other.capacity;
         size=other.size;
         frontIndex=other.frontIndex;
+        delete[] data;
         data=other.data;
         other.capacity=0;
         other.size=0;

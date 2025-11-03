@@ -188,8 +188,8 @@ int main() {
     std::cout<<cb.front()<<std::endl;
     std::cout<<cb.back()<<std::endl;
 
-    // CircularBuffer<int> cb1=cb;
-    // CircularBuffer<int> cb2(std::move(cb1));
+    CircularBuffer<int> cb1=cb;
+    CircularBuffer<int> cb2(std::move(cb1));
 
 
     std::cout<<std::endl<<"Testing ABS"<<std::endl;
@@ -218,10 +218,10 @@ int main() {
     std::cout<<abs.pop()<<std::endl;
     std::cout<<abs.pop()<<std::endl;
 
-    // ABS abs1=abs;
-    // ABS abs2=std::move(abs1);
-    // abs2=abs;
-    // abs2=std::move(abs);
+    ABS abs1=abs;
+    ABS abs2=std::move(abs1);
+    abs2=abs;
+    abs2=std::move(abs);
 
 
 
