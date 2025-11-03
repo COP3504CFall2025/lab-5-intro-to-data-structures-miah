@@ -89,6 +89,8 @@ public:
         if (size==0)
             throw std::runtime_error("tried to remove from an empty buffer");
         size--;
+        if (size==capacity/4)
+            downsize();
     }
     void removeFront() {
         if (size==0)
@@ -97,6 +99,9 @@ public:
         if (frontIndex>=capacity)
             frontIndex=0;
         size--;
+
+        if (size==capacity/4)
+            downsize();
     }
 
 
@@ -147,8 +152,22 @@ private:
     static constexpr size_t scale_factor_ = 2;
 
     void increaseSize() {
-        T* temp=new T[capacity*scale_factor_];
-        for (std::size_t i=0;i<capacity;i++) {
+        T* temp=new T[capacity/scale_factor_];
+        for (std::size_t i=0;i<size;i++) {
+            if (i+frontIndex>=capacity)
+                temp[i]=data[i+frontIndex-capacity];
+            else
+                temp[i]=data[i+frontIndex];
+        }
+        frontIndex=0;
+        capacity = capacity/scale_factor_;
+        delete[] data;
+        data=temp;
+    }
+
+    void downsize() {
+        T* temp=new T[capacity/scale_factor_];
+        for (std::size_t i=0;i<size;i++) {
             if (i+frontIndex>=capacity)
                 temp[i]=data[i+frontIndex-capacity];
             else
