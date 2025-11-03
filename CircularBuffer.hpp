@@ -108,7 +108,7 @@ public:
     const T& back() const {
         if (size==0)
             throw std::runtime_error("tried to access an empty buffer");
-        if (frontIndex+size>=capacity)
+        if (frontIndex+size>capacity)
             return data[frontIndex+size-capacity-1];
         return data[frontIndex+size-1];
     }
