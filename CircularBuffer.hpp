@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <iostream>
 
 template <typename T>
 class CircularBuffer {
@@ -11,7 +12,7 @@ public:
         data=new T[capacity];
         size=other.size;
         frontIndex=0;
-        for (int i=0;i<capacity;i++) {
+        for (std::size_t i=0;i<capacity;i++) {
             if (i+other.frontIndex>=capacity)
                 data[i]=other.data[i-capacity];
             else
@@ -38,7 +39,7 @@ public:
         data=new T[capacity];
         size=other.size;
         frontIndex=0;
-        for (int i=0;i<capacity;i++) {
+        for (std::size_t i=0;i<capacity;i++) {
             if (i+other.frontIndex>=capacity)
                 data[i]=other.data[i-capacity];
             else
@@ -123,6 +124,17 @@ public:
         return data;
     }
 
+    void printData() {
+        std::cout<<"{ ";
+        for (std::size_t i=0; i<size;i++) {
+            if (i+frontIndex>=capacity)
+                std::cout<<data[i+frontIndex-capacity]<<" ";
+            else
+                std::cout<<data[i+frontIndex]<< " ";
+        }
+        std::cout<< "}"<<std::endl;
+    }
+
 
     ~CircularBuffer() {
         delete[] data;
@@ -138,7 +150,7 @@ private:
         T* temp=new T[capacity*scale_factor_];
         for (std::size_t i=0;i<capacity;i++) {
             if (i+frontIndex>=capacity)
-                temp[i]=data[i-capacity];
+                temp[i]=data[i+frontIndex-capacity];
             else
                 temp[i]=data[i+frontIndex];
         }

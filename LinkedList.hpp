@@ -11,7 +11,7 @@ public:
 	// Behaviors
 	void printForward() const {
 		if (count==0)
-			throw std::runtime_error("tried to print an empty linked list");
+			return;
 		const Node* currentNode = head;
 		while (currentNode) {
 			std::cout << currentNode->data << std::endl;
@@ -20,7 +20,7 @@ public:
 	}
 	void printReverse() const {
 		if (count==0)
-			throw std::runtime_error("tried to print an empty linked list");
+			return;
 		const Node* currentNode = tail;
 		while (currentNode) {
 			std::cout << currentNode->data << std::endl;

@@ -65,7 +65,6 @@ int main() {
     std::cout<<movedll.getTail()->data<<std::endl;
     std::cout<<movedll.getCount()<<std::endl;
 
-    throw std::runtime_error("done");
 
 
     std::cout<<std::endl<<"testing LLQ"<<std::endl;
@@ -156,13 +155,20 @@ int main() {
     cb.addBack(3);
     cb.addBack(4);
 
+    cb.printData();
     std::cout<<cb.front()<<std::endl;
     std::cout<<cb.back()<<std::endl;
     cb.removeFront();
     cb.removeBack();
 
-    std::cout<<cb.getCapacity()<<std::endl;
+    cb.printData();
+
+    std::cout<<"cap "<<cb.getCapacity()<<std::endl;
     std::cout<<cb.getSize()<<std::endl;
+    std::cout<<cb.front()<<std::endl;
+    std::cout<<cb.back()<<std::endl;
+
+    throw std::runtime_error("done");
 
     std::cout<<std::endl<<"testing ABS"<<std::endl;
 
