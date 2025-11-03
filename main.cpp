@@ -115,10 +115,6 @@ int main() {
     newlls.pop();
     std::cout<<newlls.pop()<<std::endl;
 
-    std::cout<<lls.peek()<<std::endl;
-
-    throw std::runtime_error("done");
-
     std::cout<<std::endl<<"testing LLDQ"<<std::endl;
 
     LLDQ<int> lldq;
@@ -202,6 +198,23 @@ int main() {
     std::cout<<abs.getMaxCapacity()<<std::endl;
     std::cout<<abs.peek()<<std::endl;
     std::cout<<abs.pop()<<std::endl;
+
+    ABS<int> newabs=std::move(abs);
+
+    std::cout<<"cuckshit"<<std::endl;
+
+    std::cout<<newabs.getSize()<<std::endl;
+    std::cout<<newabs.getMaxCapacity()<<std::endl;
+    std::cout<<newabs.peek()<<std::endl;
+    std::cout<<newabs.pop()<<std::endl;
+    newabs.push(12);
+    newabs.push(13);
+    newabs.push(14);
+    std::cout<<newabs.pop()<<std::endl;
+    std::cout<<abs.peek()<<std::endl;
+    abs=newabs;
+
+    throw std::runtime_error("done");
 
     std::cout<<std::endl<<"testing ABQ"<<std::endl;
 

@@ -13,24 +13,8 @@ private:
     CircularBuffer<T> data;
 
 public:
-    // Big 5
-    ABDQ() : data() {}
-    explicit ABDQ(std::size_t capacity) : data(capacity) {}
-    ABDQ(const ABDQ& other) : data(other.data) {}
-    ABDQ(ABDQ&& other) noexcept : data(other.data) {}
-    ABDQ& operator=(const ABDQ& other) {
-        if (this==&other)
-            return *this;
-        data=other.data;
-        return *this;
-    }
-    ABDQ& operator=(ABDQ&& other) noexcept {
-        if (this==&other)
-            return *this;
-        data=other.data;
-        return *this;
-    }
-    ~ABDQ() override = default;
+    // Constructor
+    explicit ABDQ(std::size_t capacity=0) : data(capacity) {}
 
     // Insertion
     void pushFront(const T& item) override {

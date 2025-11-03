@@ -12,24 +12,8 @@ using std::size_t;
 template<typename T>
 class ABS : public StackInterface<T> {
 public:
-    // Big 5 + Parameterized Constructor
-    ABS() : data() {}
-    explicit ABS(const size_t capacity) : data(capacity) {}
-    ABS(const ABS& other) : data(other.data) {}
-    ABS& operator=(const ABS& rhs) {
-        if (this==&rhs)
-            return *this;
-        data = rhs.data;
-        return *this;
-    }
-    ABS(ABS&& other) noexcept : data(other.data) {}
-    ABS& operator=(ABS&& rhs) noexcept {
-        if (this==&rhs)
-            return *this;
-        data = rhs.data;
-        return *this;
-    }
-    ~ABS() noexcept override = default;
+    // Constructor
+    explicit ABS(const size_t capacity = 0) : data(capacity) {}
 
     // Get the number of items in the ABS
     [[nodiscard]] size_t getSize() const noexcept override {

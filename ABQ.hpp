@@ -14,24 +14,8 @@ class ABQ : public QueueInterface<T> {
     CircularBuffer<T> data;
 
 public:
-    // Constructors + Big 5
-    ABQ() : data() {}
-    explicit ABQ(const size_t capacity) : data(capacity) {}
-    ABQ(const ABQ& other) : data(other.data) {}
-    ABQ& operator=(const ABQ& rhs) {
-        if (this==&rhs)
-            return *this;
-        data = rhs.data;
-        return *this;
-    }
-    ABQ(ABQ&& other) noexcept : data(other.data) {}
-    ABQ& operator=(ABQ&& rhs) noexcept {
-        if (this==&rhs)
-            return *this;
-        data = rhs.data;
-        return *this;
-    }
-    ~ABQ() noexcept override = default;
+    // Constructor
+    explicit ABQ(const size_t capacity=0) : data(capacity) {}
 
     // Getters
     [[nodiscard]] size_t getSize() const noexcept override {
