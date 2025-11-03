@@ -59,18 +59,17 @@ public:
 	bool removeHead() {
 		if (count==0)
 			return false;
-		if (count==0)
-			return false;
 		Node* temp = head;
 		head = head->next;
 		delete temp;
-		head->prev = nullptr;
+		if (count!=1)
+			head->prev = nullptr;
+		else
+			tail=nullptr;
 		count--;
 		return true;
 	}
 	bool removeTail() {
-		if (count==0)
-			return false;
 		if (count==0)
 			return false;
 		Node* temp = tail;

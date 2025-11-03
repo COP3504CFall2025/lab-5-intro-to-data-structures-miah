@@ -43,11 +43,30 @@ int main() {
     ll.printReverse();
     std::cout<<ll.getCount()<<std::endl;
 
+
+    std::cout<<"removing"<<std::endl;
+
+    ll.removeHead();
+    ll.removeHead();
+    ll.addHead(67);
+    ll.removeHead();
+    ll.removeHead();
+    ll.removeHead();
+    ll.removeHead();
+    ll.removeHead();
+    ll.addHead(123);
+    ll.removeHead();
+    ll.addHead(20);
+    ll.printForward();
+    ll.printReverse();
+
+
     LinkedList<int> newll(ll);
     newll=ll;
     LinkedList<int> movedll(std::move(ll));
     movedll=std::move(newll);
 
+    throw std::runtime_error("done");
 
 
     std::cout<<std::endl<<"testing LLQ"<<std::endl;
